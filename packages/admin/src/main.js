@@ -2,8 +2,7 @@ import { createApp } from 'vue'
 import router from './router'
 import store from './store'
 import App from './App.vue'
-const temp = window
-const isQiankun = temp.__POWERED_BY_QIANKUN__
+const isQiankun = window.__POWERED_BY_QIANKUN__
 
 export async function bootstrap () {
   console.log('react app bootstraped')
@@ -12,16 +11,20 @@ export async function bootstrap () {
 /**
  * 应用每次进入都会调用 mount 方法，通常我们在这里触发应用的渲染方法
  */
-function render () {
-  createApp(App)
-    .use(store)
-    .use(router)
-    .mount('#admin')
+function render (callback) {
+  const app = createApp(App)
+  app.use(store)
+  app.use(router)
+  callback && typeof callback === 'function' && callback(app)
+  app.mount('#admin')
 }
 
 export async function mount (props) {
+  render((app) => {
+    app.config.globalProperties.$onGlobalStateChange = props.onGlobalStateChange
+    app.config.globalProperties.$setGlobalState = props.setGlobalState
+  })
   console.log(props)
-  render()
 }
 /**
  * 应用每次 切出/卸载 会调用的方法，通常在这里我们会卸载微应用的应用实例

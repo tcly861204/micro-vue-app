@@ -1,3 +1,3 @@
 <template>
-  <section>login</section>
+<router-view />
 </template>

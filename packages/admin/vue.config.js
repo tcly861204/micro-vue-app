@@ -5,7 +5,7 @@ const { name } = require('./package.json')
 const port = 8082
 module.exports = {
   outputDir: isProd ? resolve('../../dist/admin') : 'dist',
-  publicPath: isProd ? '/' : `//localhost:${port}`,
+  publicPath: isProd ? '/micro-app-admin' : `//localhost:${port}`,
   devServer: {
     port: 8082,
     headers: {

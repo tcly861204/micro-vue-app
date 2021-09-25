@@ -8,7 +8,8 @@
     "dev:main": "bash ./main.sh",
     "dev:login": "bash ./login.sh",
     "dev:admin": "bash ./admin.sh",
-    "build": "lerna run build",
+    "build": "lerna run build && npm run commit",
+    "commit": "git add . && git commit -m \"merge\" -n && git push -u origin master",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
