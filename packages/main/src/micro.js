@@ -1,4 +1,6 @@
 import { registerMicroApps, start, initGlobalState } from 'qiankun'
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
 // 注册子应用
 const isProd = process.env.NODE_ENV === 'production'
 registerMicroApps([
@@ -23,7 +25,9 @@ registerMicroApps([
 ], {
   beforeLoad: [
     app => {
+      NProgress.start()
       console.log(`${app.name}的beforeLoad阶段`)
+      return Promise.resolve()
     }
   ],
   beforeMount: [
@@ -33,7 +37,9 @@ registerMicroApps([
   ],
   afterMount: [
     app => {
+      NProgress.done()
       console.log(`${app.name}的afterMount阶段`)
+      return Promise.resolve()
     }
   ],
   beforeUnmount: [
@@ -63,5 +69,5 @@ actions.onGlobalStateChange((state, prev) => {
 })
 export default function () {
   // 开启服务
-  start({ experimentalStyleIsolation: true, prefetch: 'all' })
+  start({ experimentalStyleIsolation: true, prefetch: false })
 }
