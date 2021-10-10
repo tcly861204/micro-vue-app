@@ -3,9 +3,8 @@ import router from './router'
 import store from './store'
 import App from './App.vue'
 const isQiankun = window.__POWERED_BY_QIANKUN__
-
 export async function bootstrap () {
-  console.log('react app bootstraped')
+  console.log('vue admin app bootstraped')
 }
 
 /**
@@ -24,7 +23,6 @@ export async function mount (props) {
     app.config.globalProperties.$onGlobalStateChange = props.onGlobalStateChange
     app.config.globalProperties.$setGlobalState = props.setGlobalState
   })
-  console.log(props)
 }
 /**
  * 应用每次 切出/卸载 会调用的方法，通常在这里我们会卸载微应用的应用实例

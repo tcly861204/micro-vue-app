@@ -2,6 +2,7 @@
   <div class="home">
     home a
     <button @click="handleClick">click me</button>
+    <button @click="handleJump">跳转首页</button>
   </div>
 </template>
 <script>
@@ -15,7 +16,11 @@ export default {
         closeTab: 'admin-home'
       })
     }
+    const handleJump = function () {
+      window.history.replaceState({}, '', '/')
+    }
     return {
+      handleJump,
       handleClick
     }
   }

@@ -53,15 +53,14 @@ registerMicroApps([
     }
   ]
 })
-const actions = initGlobalState({ closeTab: '' })
+const actions = initGlobalState({
+  closeTab: '',
+  token: false
+})
 actions.onGlobalStateChange((state, prev) => {
-  // state: 变更后的状态; prev 变更前的状态
-  console.log('main state change', state, prev)
-  // 将action对象绑到Vue原型上，为了项目中其他地方使用方便
-  // Vue.prototype.$actions = actions;
-  // this.$actions.setGlobalState({
-  //   mt: value
-  // });
+  if (state.token) {
+    localStorage.setItem('token', true)
+  }
   if (state.closeTab !== '') {
     // vuex里面的modules里面的mutation，已经被全局使用，不想全局可以给命名空间，另外，直接调用mutation不太好，最好使用action，也就是dispatch方式
     // store.commit('CLOSE_TAG', state.closeTab);
