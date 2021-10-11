@@ -6,7 +6,7 @@ const isProd = process.env.NODE_ENV === 'production'
 registerMicroApps([
   {
     name: 'login',
-    entry: isProd ? '//localhost:4021' : '//localhost:8081',
+    entry: isProd ? '//localhost:4021' : '//localhost:3081',
     container: '#child',
     activeRule: '/login',
     props: {
@@ -15,7 +15,7 @@ registerMicroApps([
   },
   {
     name: 'admin',
-    entry: isProd ? '//localhost:4022' : '//localhost:8082',
+    entry: isProd ? '//localhost:4022' : '//localhost:3082',
     container: '#child',
     activeRule: '/admin',
     props: {

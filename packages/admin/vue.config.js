@@ -2,12 +2,12 @@ const isProd = process.env.NODE_ENV !== 'development'
 const path = require('path')
 const resolve = (dir) => path.resolve(__dirname, dir)
 const { name } = require('./package.json')
-const port = 8082
+const port = 3082
 module.exports = {
   outputDir: isProd ? resolve('../../dist/admin') : 'dist',
   publicPath: isProd ? '/micro-app-admin' : `//localhost:${port}`,
   devServer: {
-    port: 8082,
+    port: 3082,
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Credentials': true
