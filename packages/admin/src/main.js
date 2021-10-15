@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import router from './router'
 import store from './store'
 import App from './App.vue'
+import '@/style/index.scss'
 const isQiankun = window.__POWERED_BY_QIANKUN__
 export async function bootstrap () {
   console.log('vue admin app bootstraped')

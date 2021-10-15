@@ -1,7 +1,16 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
+<Layout>
   <router-view />
+</Layout>
 </template>
+<script>
+import Layout from '@/layout/index'
+export default {
+  setup () {
+    return {}
+  },
+  components: {
+    Layout
+  }
+}
+</script>
