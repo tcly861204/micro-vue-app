@@ -1,7 +1,9 @@
 import { createApp } from 'vue'
-import router from './router'
-import store from './store'
-import App from './App.vue'
+import router from '@/router'
+import store from '@/store'
+import App from '@/App.vue'
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
 import '@/style/index.scss'
 const isQiankun = window.__POWERED_BY_QIANKUN__
 export async function bootstrap () {
@@ -15,6 +17,7 @@ function render (callback) {
   const app = createApp(App)
   app.use(store)
   app.use(router)
+  app.use(ElementPlus)
   callback && typeof callback === 'function' && callback(app)
   app.mount('#admin')
 }
